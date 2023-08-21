@@ -4,19 +4,39 @@ import i from './i.png'
 export default function Textarea(props) {
     const [count, setCount] = useState("");
     const handleupper = () => {
-        let upText = count.toUpperCase();
-        setCount(upText)
+        if(count !== ""){
+            let upText = count.toUpperCase();
+            setCount(upText)
+            props.show("Converted to UpperCase","success")
+        }
+        else{
+            props.show("Enter some text first !","danger")
+        }
     }
     const handleclear = () => {
-        let cText = "";
-        setCount(cText)
+        if(count !== ""){
+            let cText = "";
+            setCount(cText)
+            props.show("Cleared Text Area","danger")
+        }
+        else{
+            props.show("No Text to Clear","danger")
+        }
+       
     }
     const handleit = (event) => {
         setCount(event.target.value)
     }
     const handlelower = () => {
-        let lowText = count.toLowerCase();
-        setCount(lowText)
+        if(count !== ""){
+            let lowText = count.toLowerCase();
+            setCount(lowText)
+            props.show("Converted to LowerCase","success")
+        }
+        else{
+            props.show("Enter some Text First","danger")
+        }
+       
     }
     const countwords = () => {
         if (count !== "") {
@@ -61,6 +81,28 @@ export default function Textarea(props) {
             return (0)
         }
     }
+    const handlecopy = () => {
+        if(count !== ""){
+            var text = document.getElementById("floatingTextarea");
+       text.select();
+       navigator.clipboard.writeText(text.value);
+       props.show("Copied to Clipboard","primary")
+        }
+        else{
+            props.show("No Text to Copy !","danger")
+        }
+       
+    }
+    const handleextraspaces = () => {
+        if(count !== ""){
+            let newtext = count.split(/[ ]+/);
+        setCount(newtext.join(" "))
+        props.show("Extra Space Removed","danger")
+        }
+        else{
+            props.show("No Text to Play !","danger")
+        }
+     }
 
     return (
         <>
@@ -75,6 +117,9 @@ export default function Textarea(props) {
                     <button className="btn btn-warning col-md-2 my-2 mx-3 text-black fs-6 fw-bold" onClick={handleupper}>To Uppercase</button>
                     <button className="btn btn-success col-md-2 my-2 mx-3 fs-6 fw-bold" onClick={handlelower}>To Lowercase</button>
                     <button className="btn btn-danger col-md-2 my-2 mx-3 fs-6 fw-bold" onClick={handleclear}>Clear Text</button>
+                    <div className="w-lg-100"></div>
+                    <button className="btn btn-info col-md-2 my-2 mx-3 fs-6 fw-bold" onClick={handlecopy}>Copy Text</button>
+                    <button className="btn btn-light col-md-2 my-2 mx-3 fs-6 fw-bold" onClick={handleextraspaces}>Remove Extra Space</button>
                 </div>
                 <h4 className="mx-3">
                     <p>{countwords()} Words</p>
@@ -84,6 +129,10 @@ export default function Textarea(props) {
                     <p> {counttime()} Minutes to Read</p>
 
                 </h4>
+                <h1>
+                    Preview
+                </h1>
+                {count === ""?"No Text to Display":count}
             </div>
         </>
     )

@@ -6,7 +6,7 @@ import i from './i.png'
 import PropTypes from 'prop-types'
 export default function Navbar(props) {
   return (
-    <nav className={`navbar navbar-expand-sm bg-${props.mode} navbar-${props.mode} sticky-top`}>
+    <nav className={`navbar navbar-expand-md bg-${props.mode} navbar-${props.mode} sticky-top`}>
       <div className="container-fluid ">
         <a className="navbar-brand" href="/"><img src={x} alt="" className='mx-2' />{props.title}</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,15 +35,22 @@ export default function Navbar(props) {
                 <img src={i} alt="" height={30} width={30} />
               </a>
               <ul className="dropdown-menu">
-                <li><button type="button" className="btn btn-outline-info mx-2" onClick={props.usemode2}>Light</button></li>
+                <li><button type="button" className="btn btn-outline-info mx-2" onClick={props.usemode2}>Light Mode</button></li>
                 <li><hr className="dropdown-divider" /></li>
-                <li><button type="button" className="btn btn-outline-dark mx-2" onClick={props.usemode1}>Dark</button></li>
+                <li><button type="button" className="btn btn-outline-dark mx-2" onClick={props.usemode1}>Dark Mode</button></li>
               </ul>
             </li>
           </ul>
         </div>
+        
       </div>
-    </nav>
+      <div className={`text-${props.mode === "dark" ? "white" : "dark"} mx-lg-1 container justify-content-end align-items-center`}>
+          <h6 className='mx-lg-1 text-center col-lg-2 col-sm-3 mx-xs-3'>Custom Themes</h6> 
+        <button type="button" className="btn btn-success rounded-cicle mx-1 col-md-0" onClick={props.green}></button>
+        <button type="button" className="btn btn-danger rounded-cicle mx-1 col-md-0" onClick={props.redd}></button>
+        <button type="button" className="btn btn-warning rounded-cicle mx-1 col-md-0" onClick={props.yell}></button>
+        </div>
+    </nav> 
   )
 }
 Navbar.defaultProps = {
