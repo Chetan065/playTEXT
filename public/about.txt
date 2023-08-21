@@ -3,4 +3,4 @@ This favicon was generated using the following font:
 - Font Title: Tiro Tamil
 - Font Author: Copyright 2020 The Indigo Project Authors (https://github.com/TiroTypeworks/Indigo)
 - Font Source: http://fonts.gstatic.com/s/tirotamil/v10/m8JXjfVIf7OT22n3M-S_ULRvamODxdI.ttf
-- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL)

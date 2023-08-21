@@ -1,41 +1,62 @@
 import React,{useState} from 'react'
 
 export default function Textarea(props) {
-    const [count , setCount] = useState();
+    const [count , setCount] = useState("");
     const handleupper = ()=>{
         let upText = count.toUpperCase();
-        setCount(count + "\n" + "After Converting to Uppercase : " + upText)
+        setCount(upText)
     }
     const handleit = (event)=>{
         setCount(event.target.value)
     }
-    const handlespaces = ()=>{
-        let space = 0;
-        for(let i=0;i<count.length;i++){
+    const handlelower = ()=>{
+        let lowText = count.toLowerCase();
+        setCount(lowText)
+    }
+    const countwords = ()=>{
+        if(count !== ""){
+            let space = 0;
+        let len = count.length;
+        for(let i=0;i<len;i++){
             if(count[i] === " "){
-                space += 1;
+                space += 1
             }
         }
-        setCount(count + "\n" + "No of Spaces in given Paragraph : " + space)
+        return(space+1)
+        }
+        else{
+            return(0)
+        }
     }
-    const handlewords = ()=>{
+    const countcharacters = ()=>{
+        let len = count.length;
+        return(len)
+    }
+    const countspaces = ()=>{
         let space = 0;
-        for(let i=0;i<count.length;i++){
+        let len = count.length;
+        for(let i=0;i<len;i++){
             if(count[i] === " "){
-                space += 1;
+                space += 1
             }
         }
-        setCount(count + "\n" + "No of Words in given Paragraph : " + (space+1))
+        return(space)
     }
-    const handleletters = ()=>{
-        let space = 0;
-        for(let i=0;i<count.length;i++){
-            if(count[i] !== " "){
-                space += 1;
-            }
+    const countletters = ()=>{
+        let len = count.length;
+        let space1 = count.split(" ").length;
+        return(len - space1 + 1);
+    }
+    const counttime = ()=>{
+        if(count !== ""){
+             let time = 0.0032 * count.split(" ").length
+        return(time)
         }
-        setCount(count + "\n" + "No of Letters in given Paragraph excluding spaces : " + space)
+        else{
+            return(0)
+        }
     }
+ 
     return (
         <>
             <h1>
@@ -44,13 +65,18 @@ export default function Textarea(props) {
             <div>
                 <textarea className="form-control" onChange={handleit} placeholder="Text here .." id="floatingTextarea" rows="10" value={count}></textarea>
             </div>
-            <div className="container my-3 justify-content-evenly row ">
-            <button className="btn btn-warning col-md-2 my-2" onClick={handleupper}>To Uppercase</button>
-            <button className="btn btn-success col-md-2 my-2" onClick={handlespaces}>Count Spaces</button>
-            <button className="btn btn-primary col-md-2 my-2"  onClick={handlewords}>Count Words</button>
-            <button className="btn btn-info col-md-2 my-2"  onClick={handleletters}>Count Letters</button>
+            <div className="container my-3 justify-content-start row ">
+            <button className="btn btn-warning col-md-2 my-2 mx-3" onClick={handleupper}>To Uppercase</button>
+            <button className="btn btn-success col-md-2 my-2 mx-3" onClick={handlelower}>To Lowercase</button>
             </div>
-            
+            <h4 className="mx-3">
+                <p>{countwords()} Words</p>
+                <p>{countcharacters()} Characters </p>
+                <p> {countspaces()} Spaces</p>  
+                <p> {countletters()} Letters</p>  
+                <p> {counttime()} Minutes to Read</p>  
+
+            </h4>
         </>
     )
 }
