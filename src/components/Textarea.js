@@ -1,10 +1,33 @@
 import React,{useState} from 'react'
+import i from './i.png'
 
 export default function Textarea(props) {
+    const[mystyle,setStyle] = useState(
+        {
+            color : "black",
+            backgroundColor : "white"
+        }
+    )
+    const dark = ()=>{
+        setStyle({
+            color : "white",
+            backgroundColor : "black"
+        })
+    }
+    const light = ()=>{
+        setStyle({
+            color : "black",
+            backgroundColor : "white"
+        })
+    }
     const [count , setCount] = useState("");
     const handleupper = ()=>{
         let upText = count.toUpperCase();
         setCount(upText)
+    }
+    const handleclear = ()=>{
+        let cText = "";
+        setCount(cText)
     }
     const handleit = (event)=>{
         setCount(event.target.value)
@@ -59,15 +82,23 @@ export default function Textarea(props) {
  
     return (
         <>
-            <h1>
-                Enter Text to Play With Text :
+            <div style={mystyle} className='p-4 ' >
+           
+             <div className='p-2'>
+                <img src={i} alt="" height={40}  width={40}/>
+             <button type="button" className="btn btn-light mx-2" onClick={light}>Light</button>
+                <button type="button" className="btn btn-dark mx-2" onClick={dark}>Dark</button>
+             </div>
+             <h1 className='px-2'>
+                Enter Text to Play With Text : 
             </h1>
-            <div>
-                <textarea className="form-control" onChange={handleit} placeholder="Text here .." id="floatingTextarea" rows="10" value={count}></textarea>
+            <div style={mystyle} className='p-3'>
+                <textarea className="form-control " style={mystyle} onChange={handleit} placeholder="Text here .." id="floatingTextarea" rows="10" value={count}></textarea>
             </div>
             <div className="container my-3 justify-content-start row ">
             <button className="btn btn-warning col-md-2 my-2 mx-3" onClick={handleupper}>To Uppercase</button>
             <button className="btn btn-success col-md-2 my-2 mx-3" onClick={handlelower}>To Lowercase</button>
+            <button className="btn btn-danger col-md-2 my-2 mx-3" onClick={handleclear}>Clear Text</button>
             </div>
             <h4 className="mx-3">
                 <p>{countwords()} Words</p>
@@ -77,6 +108,7 @@ export default function Textarea(props) {
                 <p> {counttime()} Minutes to Read</p>  
 
             </h4>
+            </div>
         </>
     )
 }

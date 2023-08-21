@@ -1,12 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
+import x from './x.png'
+import lin from './lin.png'
+import gitt from './gitt.png'
 export default function Navbar(props) {
   return (
-    <div>
-      <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+      <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
         <div className="container-fluid ">
-          <a className="navbar-brand" href="/">{props.title}</a>
+          <a className="navbar-brand" href="/"><img src={x} alt="" className='mx-2'/>{props.title}</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -23,34 +23,22 @@ export default function Navbar(props) {
                   {props.item3}
                 </a>
                 <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="https://github.com/Chetan065" target='_blank'>{props.dd1}</a></li>
+                  <li><a className="dropdown-item" href="https://github.com/Chetan065" target='_blank'><img src={gitt} height={30} width={30} className='mx-2' />{props.dd1}</a></li>
                   <li><hr className="dropdown-divider" /></li>
-                  <li><a className="dropdown-item" href="/">{props.dd2}</a></li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li><a className="dropdown-item" href="/">{props.dd3}</a></li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li><a className="dropdown-item" href="/">{props.dd4}</a></li>
+                  <li><a className="dropdown-item" href="https://www.linkedin.com/in/chaitan-agarwal-016bba253" target='_blank'><img src={lin} height={30} width={30} className='mx-2' />{props.dd2}</a></li>
                 </ul>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">{props.search}</button>
-            </form>
           </div>
         </div>
       </nav>
-    </div>
   )
 }
 Navbar.defaultProps = {
   title: 'playTEXT',
   item1: "Home",
   item2: "UseCase",
-  item3: "Support Me",
+  item3: "Social Media",
   dd1: "GitHub",
   dd2: "LinkedIn",
-  dd3: "Twitter",
-  dd4: "Explore?",
-  search: "Search"
 }

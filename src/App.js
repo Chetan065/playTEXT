@@ -6,13 +6,10 @@ import Textarea from './components/Textarea';
 function App() {
   return (
     <>
-    {/* Navbar */}
     <Navbar/>
-<div className="container m-auto my-5">
-  {/* TextBox to Enter any Text */}
-  <Textarea/>
-</div>
-    
+    <div className="container m-auto my-2 ">
+    <Textarea/>
+    </div>
     </>
   );
 }
