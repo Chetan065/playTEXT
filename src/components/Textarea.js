@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import i from './i.png'
 
 export default function Textarea(props) {
     const [count, setCount] = useState("");
