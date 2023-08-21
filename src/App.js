@@ -8,11 +8,11 @@ function App() {
     <>
     {/* Navbar */}
     <Navbar/>
-
-    {/* TextBox to Enter any Text */}
-    <Textarea placeholder = "Text here ..."/>
-
-
+<div className="container m-auto my-5">
+  {/* TextBox to Enter any Text */}
+  <Textarea/>
+</div>
+    
     </>
   );
 }
