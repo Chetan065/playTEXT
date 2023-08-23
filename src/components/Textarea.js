@@ -38,19 +38,7 @@ export default function Textarea(props) {
        
     }
     const countwords = () => {
-        // if (count !== "") {
-        //     let space = 0;
-        //     let len = count.length;
-        //     for (let i = 0; i < len; i++) {
-        //         if (count[i] === " ") {
-        //             space += 1
-        //         }
-        //     }
-        //     return (space + 1)
-        // }
-        // else {
-        //     return (0)
-        // }
+        
         let newcount = count.split(/\s+/).filter((ele)=>{return ele.length !==0}).length
         return (newcount)
     }
