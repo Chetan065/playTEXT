@@ -38,19 +38,21 @@ export default function Textarea(props) {
        
     }
     const countwords = () => {
-        if (count !== "") {
-            let space = 0;
-            let len = count.length;
-            for (let i = 0; i < len; i++) {
-                if (count[i] === " ") {
-                    space += 1
-                }
-            }
-            return (space + 1)
-        }
-        else {
-            return (0)
-        }
+        // if (count !== "") {
+        //     let space = 0;
+        //     let len = count.length;
+        //     for (let i = 0; i < len; i++) {
+        //         if (count[i] === " ") {
+        //             space += 1
+        //         }
+        //     }
+        //     return (space + 1)
+        // }
+        // else {
+        //     return (0)
+        // }
+        let newcount = count.split(/\s+/).filter((ele)=>{return ele.length !==0}).length
+        return (newcount)
     }
     const countcharacters = () => {
         let len = count.length;
@@ -72,18 +74,12 @@ export default function Textarea(props) {
         return (len - space1 + 1);
     }
     const counttime = () => {
-        if (count !== "") {
-            let time = 0.0032 * count.split(" ").length
-            return (time)
-        }
-        else {
-            return (0)
-        }
+        let time = 0.0032 * count.split(/\s+/).filter((ele)=>{return ele.length !==0}).length
+        return(time)
     }
     const handlecopy = () => {
-        if(count !== ""){
-            var text = document.getElementById("floatingTextarea");
-       text.select();
+        if(count !== "" && count !== " "){
+        var text = document.getElementById("floatingTextarea");
        navigator.clipboard.writeText(text.value);
        props.show("Copied to Clipboard","primary")
         }
